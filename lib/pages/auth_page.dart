@@ -92,7 +92,7 @@ class _AuthPageState extends State<AuthPage> {
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      // Handle sign up
+                     Navigator.pushNamed(context, '/signup');
                     },
                     child: const Text(
                       'Don\'t have an account? Sign Up',

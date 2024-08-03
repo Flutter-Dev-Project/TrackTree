@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:track_tree/pages/auth_page.dart';
+import 'package:track_tree/pages/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes:{
         '/':(context) => AuthPage(),
+        '/signup':(context)=>SignUp(),
       }
     );
 }
