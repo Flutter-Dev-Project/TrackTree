@@ -4,7 +4,7 @@ class SignUp extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
-
+//To DO : Add authentication with Firebase logic and check of already registered users
 class _SignUpPageState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
