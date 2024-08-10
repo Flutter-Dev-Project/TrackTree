@@ -10,9 +10,6 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
-    // return  Scaffold(
-    //   appBar: AppBar(title: Text('Login check')
-    // ));
     return Scaffold(
       body: Stack(
         children: [
@@ -74,7 +71,6 @@ class _AuthPageState extends State<AuthPage> {
                     },
                     child: Text('Login'),
                     style: ElevatedButton.styleFrom(
-
                       padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                       textStyle: TextStyle(fontSize: 18),
                     ),
@@ -92,7 +88,7 @@ class _AuthPageState extends State<AuthPage> {
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                     Navigator.pushNamed(context, '/signup');
+                      Navigator.pushNamed(context, '/signup');
                     },
                     child: const Text(
                       'Don\'t have an account? Sign Up',
@@ -102,11 +98,10 @@ class _AuthPageState extends State<AuthPage> {
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      // Handle continue as guest
+                      Navigator.pushNamed(context, '/dashboard');
                     },
                     child: Text('Continue as Guest'),
                     style: ElevatedButton.styleFrom(
-
                       padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                       textStyle: TextStyle(fontSize: 18),
                     ),
@@ -120,4 +115,3 @@ class _AuthPageState extends State<AuthPage> {
     );
   }
 }
-
