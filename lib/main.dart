@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:track_tree/pages/Tree_Suggestion.dart';
 import 'package:track_tree/pages/auth_page.dart';
 import 'package:track_tree/pages/signup.dart';
 import 'package:track_tree/dashboard.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/':(context) => AuthPage(),
         '/signup':(context)=>SignUp(),
         '/dashboard': (context) => const Dashboard(),
+        '/treesuggestion':(context)=>TreeSuggestion(),
       }
     );
 }

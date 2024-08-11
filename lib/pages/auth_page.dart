@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -9,25 +8,6 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  String _errorMessage = '';
-
-  void _login() async {
-    try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-      Navigator.pushReplacementNamed(context, '/signup');
-    } on FirebaseAuthException catch (e) {
-      setState(() {
-        _errorMessage = e.message!;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +39,7 @@ class _AuthPageState extends State<AuthPage> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    controller: _emailController,
+
                     decoration: InputDecoration(
                       labelText: 'Email',
                       labelStyle: TextStyle(color: Colors.white),
@@ -73,7 +53,7 @@ class _AuthPageState extends State<AuthPage> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    controller: _passwordController,
+
                     decoration: InputDecoration(
                       labelText: 'Password',
                       labelStyle: TextStyle(color: Colors.white),
@@ -90,7 +70,7 @@ class _AuthPageState extends State<AuthPage> {
                   ElevatedButton(
                     onPressed: () {
                       // Handle login
-                     _login();
+
 
                     },
                     child: Text('Login'),
