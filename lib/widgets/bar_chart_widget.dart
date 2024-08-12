@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:track_tree/models/aqi_data.dart';
 
 class BarChartWidget extends StatelessWidget {
-  const BarChartWidget({Key? key}) : super(key: key);
+  final List<AQIData> data;
+
+  const BarChartWidget({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,24 +13,23 @@ class BarChartWidget extends StatelessWidget {
       height: 200,
       child: BarChart(
         BarChartData(
-          barGroups: [
-            BarChartGroupData(x: 24, barRods: [
-              BarChartRodData(toY: 100, color: Colors.lightGreen)
-            ], showingTooltipIndicators: [0]),
-            BarChartGroupData(x: 25, barRods: [
-              BarChartRodData(toY: 400, color: Colors.green)
-            ], showingTooltipIndicators: [0]),
-            BarChartGroupData(x: 26, barRods: [
-              BarChartRodData(toY: 50, color: Colors.lightGreen)
-            ], showingTooltipIndicators: [0]),
-          ],
+          barGroups: data.asMap().entries.map((entry) {
+            int index = entry.key;
+            AQIData aqiData = entry.value;
+            return BarChartGroupData(
+              x: index,
+              barRods: [
+                BarChartRodData(toY: aqiData.aqi, color: Colors.lightGreen)
+              ],
+            );
+          }).toList(),
           titlesData: FlTitlesData(
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
                 reservedSize: 28,
                 getTitlesWidget: (value, meta) {
-                  return Text(value.toString(),
+                  return Text(data[value.toInt()].date,
                       style: TextStyle(color: Colors.black, fontSize: 12));
                 },
               ),
@@ -44,12 +46,6 @@ class BarChartWidget extends StatelessWidget {
             ),
           ),
           barTouchData: BarTouchData(
-            touchTooltipData: BarTouchTooltipData(
-              // Customize tooltip appearance as needed
-            ),
-            touchCallback: (FlTouchEvent event, barTouchResponse) {
-              // Add pointer animations here if needed
-            },
             handleBuiltInTouches: true,
           ),
         ),

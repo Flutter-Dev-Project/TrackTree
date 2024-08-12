@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AirQualityIndicator extends StatelessWidget {
-  const AirQualityIndicator({Key? key}) : super(key: key);
+  final double aqi;
+
+  const AirQualityIndicator({Key? key, required this.aqi}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +17,9 @@ class AirQualityIndicator extends StatelessWidget {
         ),
         const SizedBox(height: 70),
         const Spacer(),
-        const Text(
-          "40 PPM",
-          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+        Text(
+          "$aqi PPM",
+          style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 70),
       ],
